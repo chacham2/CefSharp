@@ -131,11 +131,11 @@ namespace CefSharp.OffScreen.Example
             EventHandler<LoadingStateChangedEventArgs> handler = null;
             handler = (sender, args) =>
             {
-                //Wait for while page to finish loading not just the first frame
+                // Wait for the whole page to finish loading and not just the first frame.
                 if (!args.IsLoading)
                 {
                     browser.LoadingStateChanged -= handler;
-                    //Important that the continuation runs async using TaskCreationOptions.RunContinuationsAsynchronously
+                    // It is important that the continuation runs async via TaskCreationOptions.RunContinuationsAsynchronously.
                     tcs.TrySetResult(true);
                 }
             };
